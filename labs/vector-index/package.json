@@ -1,0 +1,33 @@
+{
+  "name": "adbapi",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "aws-sdk": "^2.1659.0",
+    "axios": "^1.7.2",
+    "axis": "^1.0.0",
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "i18n": "^0.15.1",
+    "mongodb": "^6.8.0",
+    "redis": "^4.6.15",
+    "winston": "^3.13.1"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/i18n": "^0.13.12",
+    "@types/node": "^20.14.11",
+    "@types/winston": "^2.4.4",
+    "nodemon": "^3.1.4",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.3"
+  }
+}

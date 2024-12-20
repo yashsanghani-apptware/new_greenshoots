@@ -1,0 +1,34 @@
+package bpel
+
+import (
+    "context"
+
+    "gobpel/api"
+    "gobpel/pkg/db"
+    "google.golang.org/protobuf/types/known/emptypb"
+)
+
+type Server struct {
+    api.UnimplementedBPELProcessServiceServer
+}
+
+func (s *Server) CreateProcess(ctx context.Context, req *api.Process) (*api.Process, error) {
+    return db.CreateProcess(req)
+}
+
+func (s *Server) GetProcess(ctx context.Context, req *api.GetProcessRequest) (*api.Process, error) {
+    return db.GetProcess(req.ProcessId)
+}
+
+func (s *Server) UpdateProcess(ctx context.Context, req *api.Process) (*api.Process, error) {
+    return db.UpdateProcess(req)
+}
+
+func (s *Server) DeleteProcess(ctx context.Context, req *api.GetProcessRequest) (*emptypb.Empty, error) {
+    _, err := db.DeleteProcess(req.ProcessId)
+    if err != nil {
+        return nil, err
+    }
+    return &emptypb.Empty{}, nil
+}
+

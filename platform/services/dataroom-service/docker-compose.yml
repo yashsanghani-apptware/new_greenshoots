@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  data-room-service:
+    build: .
+    container_name: data-room-service
+    ports:
+      - "3001:3001"
+    environment:
+      - MONGO_URI=mongodb+srv://saddamshah:hOzlWf1NF6Xnx7aA@agsiri.nk7ua3s.mongodb.net/dataRoomService
+      - REDIS_URL=redis://redis:6381
+      - JWT_SECRET=agsiri2023
+    depends_on:
+      - mongo
+      - redis
+    networks:
+      - shared-network  # Ensure that all services are on the same network
+
+  mongo:
+    image: mongo:4.4
+    container_name: mongo
+    ports:
+      - "27019:27017"   # Host port 27019 mapped to container port 27017
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - shared-network  # Make MongoDB accessible to other services
+
+  redis:
+    image: redis:6
+    container_name: dataroom-redis
+    ports:
+      - "6381:6379"
+    networks:
+      - shared-network  # Make Redis accessible to other services
+
+volumes:
+  mongo-data:
+
+networks:
+  shared-network:
+    external: true

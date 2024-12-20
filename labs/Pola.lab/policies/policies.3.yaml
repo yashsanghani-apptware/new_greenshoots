@@ -1,0 +1,24 @@
+- name: "VIP Special Access"
+  description: "VIP users with active status can view any resource if their clearance level is sufficient or they are in an internal network."
+  resource: "*"
+  rules:
+    - actions: ["view"]
+      effect: "ALLOW"
+      condition:
+        match:
+          any:
+            - expr: "user.role === 'vip' && user.vipStatus === 'active' && resource.clearanceLevel <= user.clearanceLevel"
+            - expr: "user.role === 'vip' && user.vipStatus === 'active' && user.network === 'internal'"
+
+- name: "Sensitive Resource Protection"
+  description: "Sensitive resources can only be accessed by users with the required clearance level and who are either part of the internal network or have a special clearance role."
+  resource: "ari:resource:sensitive"
+  rules:
+    - actions: ["access"]
+      effect: "ALLOW"
+      condition:
+        match:
+          all:
+            - expr: "user.clearanceLevel >= resource.requiredClearance"
+            - expr: "(user.network === 'internal' || user.role === 'special-clearance')"
+

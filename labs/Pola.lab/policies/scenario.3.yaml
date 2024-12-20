@@ -1,0 +1,30 @@
+- scenarioId: 1
+  description: "VIP user accessing a sensitive resource."
+  user:
+    attr:
+      role: "vip"
+      vipStatus: "active"
+      clearanceLevel: 7
+      network: "external"
+  resource:
+    attr:
+      requiredClearance: 5
+      clearanceLevel: 7
+  context:
+    currentTime: "2024-08-15T10:00:00Z"
+  action: "view"
+
+- scenarioId: 2
+  description: "Internal user with special clearance accessing a sensitive resource."
+  user:
+    attr:
+      role: "special-clearance"
+      clearanceLevel: 5
+      network: "internal"
+  resource:
+    attr:
+      requiredClearance: 5
+  context:
+    currentTime: "2024-08-15T10:00:00Z"
+  action: "access"
+

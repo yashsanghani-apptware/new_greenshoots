@@ -1,0 +1,74 @@
+version: '3.7'
+
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+  gobpel-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "50051:50051"
+    depends_on:
+      - mongodb
+    environment:
+      MONGO_URI: "mongodb://mongodb:27017"
+
+  dataservice:
+    build:
+      context: ./pkg/webservice/dataservice
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8081"
+
+  preprocessingservice:
+    build:
+      context: ./pkg/webservice/preprocessingservice
+      dockerfile: Dockerfile
+    ports:
+      - "8082:8082"
+
+  trainingservice:
+    build:
+      context: ./pkg/webservice/trainingservice
+      dockerfile: Dockerfile
+    ports:
+      - "8083:8083"
+
+  evaluationservice:
+    build:
+      context: ./pkg/webservice/evaluationservice
+      dockerfile: Dockerfile
+    ports:
+      - "8084:8084"
+
+  deploymentservice:
+    build:
+      context: ./pkg/webservice/deploymentservice
+      dockerfile: Dockerfile
+    ports:
+      - "8085:8085"
+
+  promptingservice:
+    build:
+      context: ./pkg/webservice/promptingservice
+      dockerfile: Dockerfile
+    ports:
+      - "8086:8086"
+
+  ragservice:
+    build:
+      context: ./pkg/webservice/ragservice
+      dockerfile: Dockerfile
+    ports:
+      - "8087:8087"
+
+volumes:
+  mongo-data:
+

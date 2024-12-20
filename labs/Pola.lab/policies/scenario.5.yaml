@@ -1,0 +1,105 @@
+- scenarioId: 1
+  description: "Manager with special clearance and high level accessing a secure resource at HQ."
+  user:
+    attr:
+      role: "Manager"
+      roles: ["special-clearance", "user"]
+      clearanceLevel: 8
+      age: 40
+      department: "Operations"
+      isActive: true
+      isSuspended: false
+      tenure: 5
+  resource:
+    attr:
+      tags: ["confidential", "secure"]
+      requiredClearance: 7
+      lastAccessed: "2024-08-11T10:00:00Z"
+      sensitivityLevel: 6
+      classification: "sensitive"
+      location: "HQ"
+      isFlaggedForReview: false
+  context:
+    currentTime: "2024-08-15T10:00:00Z"
+    isUnderMaintenance: false
+  action: "edit"
+
+- scenarioId: 2
+  description: "Junior researcher from R&D accessing a flagged resource during maintenance."
+  user:
+    attr:
+      role: "Researcher"
+      roles: ["researcher", "user"]
+      clearanceLevel: 5
+      age: 27
+      department: "R&D"
+      isActive: true
+      isSuspended: false
+      tenure: 3
+  resource:
+    attr:
+      tags: ["public"]
+      requiredClearance: 4
+      lastAccessed: "2024-08-14T10:00:00Z"
+      sensitivityLevel: 3
+      classification: "public"
+      location: "HQ"
+      isFlaggedForReview: true
+  context:
+    currentTime: "2024-08-15T10:00:00Z"
+    isUnderMaintenance: true
+  action: "view"
+
+- scenarioId: 3
+  description: "Senior staff accessing a sensitive project resource with appropriate tenure."
+  user:
+    attr:
+      role: "Director"
+      roles: ["senior-staff", "user"]
+      clearanceLevel: 10
+      age: 50
+      department: "R&D"
+      isActive: true
+      isSuspended: false
+      isUnderInvestigation: false
+      tenure: 15
+  resource:
+    attr:
+      tags: ["sensitive", "project"]
+      requiredClearance: 9
+      lastAccessed: "2024-08-10T10:00:00Z"
+      sensitivityLevel: 7
+      classification: "sensitive"
+      location: "HQ"
+      isFlaggedForReview: false
+  context:
+    currentTime: "2024-08-15T10:00:00Z"
+    isUnderMaintenance: false
+  action: "edit"
+
+- scenarioId: 4
+  description: "Inactive admin trying to access a flagged resource during maintenance."
+  user:
+    attr:
+      role: "Admin"
+      roles: ["admin", "user"]
+      clearanceLevel: 10
+      age: 35
+      department: "IT"
+      isActive: false
+      isSuspended: false
+      tenure: 12
+  resource:
+    attr:
+      tags: ["confidential"]
+      requiredClearance: 5
+      lastAccessed: "2024-08-15T08:00:00Z"
+      sensitivityLevel: 5
+      classification: "sensitive"
+      location: "Remote"
+      isFlaggedForReview: true
+  context:
+    currentTime: "2024-08-15T10:00:00Z"
+    isUnderMaintenance: true
+  action: "view"
+

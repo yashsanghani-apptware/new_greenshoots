@@ -1,0 +1,14 @@
+{
+  "error.createFarm": "No se pudo crear la granja",
+  "error.farmNotFound": "Granja no encontrada",
+  "error.updateFarm": "No se pudo actualizar la granja",
+  "error.getFarms": "No se pudieron obtener las granjas",
+  "error.getFarm": "No se pudo obtener la granja",
+  "error.deleteFarm": "No se pudo eliminar la granja",
+  "error.updateSoilInformation": "No se pudo actualizar la información del suelo",
+  "error.updateFinancialInformation": "No se pudo actualizar la información financiera",
+  "error.updateCropInformation": "No se pudo actualizar la información del cultivo",
+  "error.updateOtherInformation": "No se pudo actualizar la otra información",
+  "error.generic": "Ocurrió un error"
+}
+

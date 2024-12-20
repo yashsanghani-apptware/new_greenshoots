@@ -1,0 +1,12 @@
+{
+  "error.createOrUpdateSubscription": "No se pudo crear o actualizar la suscripción",
+  "error.listOfferingSubscriptions": "No se pudieron listar las suscripciones de la oferta",
+  "error.listInvestorSubscriptions": "No se pudieron listar las suscripciones del inversor",
+  "error.deleteSubscription": "No se pudo eliminar la suscripción",
+  "error.createOrUpdateAllocation": "No se pudo crear o actualizar la asignación",
+  "error.deleteAllocation": "No se pudo eliminar la asignación",
+  "error.generic": "Ocurrió un error",
+  "success.deleteSubscription": "Suscripción eliminada con éxito",
+  "success.deleteAllocation": "Asignación eliminada con éxito"
+}
+

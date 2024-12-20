@@ -1,0 +1,83 @@
+# Agsiri Platform Design Notes
+
+## Stage 1: User Sign up and Onboarding
+
+. Users signs up for an account on Agsiri Platform.
+. Systems walks through set of questions and based the responses system decides where this type of users are good candidcates to create account on the platform
+. Questions that are asked to evaluate and verfiy the user for suitability include:
+
+ - purpose of the investment
+ - investor type (individual, entity, investment advisor etc)
+ - investment allocation amount and time frame etc.
+ 
+. During the sign up process user provides the following information
+
+ - first and last name
+ - date of birth
+ - address
+ - phone number
+ - email
+ - Accept terms and conditions
+ 
+ . once the user is created, user should be able to add: 
+  - accounts - this include investment account or funding accounts
+  - add beneficiaries
+  - review and execute all legal disclosures etc.
+ 
+ . Once the user is successfully onboarded, then the user would be able to review all offerings and invest in the offerings
+ 
+ . During the investment phase, user selects the investment account, funding account, and beneficiaries for the investment.
+  
+Within the Agsiri platform, supports following user types:
+- Realtor/Brokerage Agents - This persons works with Agsiri sales team to identify and source properties for Agsiri. This person will have access to property listing informaion. 
+- Investor - once the investor is successfully onboarded, investor would have access to all listings, offerings, campaigns and all documents reviewed, approved, and signed.
+- Farm Manager - responsible for day to day operations of the farm. Farm Manager has access to only farm related records and data
+- Seller/Owner - Onwer/Seller of the farm. they can only get access to listing information.
+- Analyst - Responsible for due diligence, assessment, and reporting of invesment performance
+
+## Stage 2: Asset Listing and Management
+
+. Agsiri sales team source properties through broker/brokerage agents.
+. Sales/sourcing team enters the property/asset information into the system using the Platform Account (Role: Sourcing Team)
+. Agsiri platform also connect to variety of MLS data stores to scout for properties of interest and run them through series of algorithms to assess their suitability. During this phase, Agsiri engine also collects any relevant information and documents. 
+
+. This information is captured into following entities
+
+ - Asset profile
+ - Legal Parcle information for each asset/property
+ - Soil maps and asset specific information
+ - All asset disclosures and reports
+ - Asset survey records/maps
+ - Due Diligence Team reports and notes
+
+## Stage 3: Offer and Campaign Management
+ . Once the asset is onboarded/listed on the platform, investment team creates an offer, captures all finanl projections, and campaign documents. This information will be captured in respective entities. These include:
+ 
+  - Offer Details
+  - Offer financial projections
+  - Campaigns
+  - Target audience lists
+  - Frequency of the outreach
+  - Offer Media/Documents
+  - Offer disclosures 
+  - Legal entity and title ownership information (LLC formation)
+  - Subscriber information
+  
+## Stage 4: Farm Management and Operational Metrics
+   Farm Manager responsible for managing day-to-day operations of the assigned farm. FM collects all operational metrics, farm performance data like crop yield metrics, crop details, farm related expenses etc.
+
+## Stage 5: Trading Flow
+   At this stage, this farm is eligible for trading and it will go through the trading flow.
+This is for investors to buy and sell shares of the investment
+Shares can be sold by the investor at any time after the initial holding period.
+Shares to be sold are subject to the minimum shares that can be held by the investor, the only exception is if they want to sell all the shares
+The investor initiates the process by specifying how many shares they want sell. To make things simple, they cannot specify the ask price nor can they provide a limit. The share price will always be determined by the system
+Once the 'Sale Process' is initiated, the system generates a campaign to be sent out to all the customers with the complete details of the sale
+If one or more customers are interested in buying part or all the shares (subject to the limitation above), then the sale can proceed
+If there is oversubscription on the shares, it will be treated on a first come first serve basis.
+If there is under subscription on the shares, the seller can only sell the number of shares the buyer(s) are interested in
+If there is no interest from any of the customers, the seller will not be able to sell any of the shares
+The seller will be paying a transaction fee (say 1% of the transaction cost)
+The buyer will also pay a transaction fee (say 1% of the transaction cost)
+
+  

@@ -1,0 +1,65 @@
+- scenarioId: 1
+  description: "Admin user attempts to delete a resource."
+  user:
+    attr:
+      role: "admin"
+      network: "internal"
+  resource:
+    attr:
+      status: "active"
+  context:
+    currentTime: "2024-08-15T10:00:00Z"
+  action: "delete"
+
+- scenarioId: 2
+  description: "Guest user tries to edit a resource."
+  user:
+    attr:
+      role: "guest"
+  resource:
+    attr:
+      visibility: "public"
+  context:
+    currentTime: "2024-08-15T10:00:00Z"
+  action: "edit"
+
+- scenarioId: 3
+  description: "Manager tries to edit an archived resource."
+  user:
+    attr:
+      role: "manager"
+      department: "sales"
+  resource:
+    attr:
+      status: "archived"
+      department: "sales"
+  context:
+    currentTime: "2024-08-15T10:00:00Z"
+  action: "edit"
+
+- scenarioId: 4
+  description: "External user reads a resource marked for external access."
+  user:
+    attr:
+      network: "external"
+  resource:
+    attr:
+      externalAccess: true
+  context:
+    currentTime: "2024-08-15T10:00:00Z"
+  action: "read"
+
+- scenarioId: 5
+  description: "VIP user accesses a restricted resource."
+  user:
+    attr:
+      role: "vip"
+      vipStatus: "active"
+  resource:
+    attr:
+      requiredClearance: 5
+      clearanceLevel: 7
+  context:
+    currentTime: "2024-08-15T10:00:00Z"
+  action: "view"
+

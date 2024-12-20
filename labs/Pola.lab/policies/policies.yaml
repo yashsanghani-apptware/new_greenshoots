@@ -1,0 +1,44 @@
+- name: "Admin Role Check"
+  description: "Allow access if the user is an Admin."
+  resource: "*"
+  rules:
+    - actions: ["*"]
+      effect: "ALLOW"
+      condition:
+        match:
+          all:
+            - expr: "customOperators.isAdmin(user.role)"
+
+- name: "Tag-Based Access"
+  description: "Allow access if the resource has a specific tag."
+  resource: "*"
+  rules:
+    - actions: ["*"]
+      effect: "ALLOW"
+      condition:
+        match:
+          all:
+            - expr: "customOperators.hasTag(resource.tags, 'confidential')"
+
+- name: "Age Restriction"
+  description: "Deny access if the user is younger than a certain age."
+  resource: "*"
+  rules:
+    - actions: ["*"]
+      effect: "DENY"
+      condition:
+        match:
+          all:
+            - expr: "customOperators.isOlderThan(user.age, 18)"
+
+- name: "Recent Access"
+  description: "Allow access if the resource has been accessed within the last 7 days."
+  resource: "*"
+  rules:
+    - actions: ["*"]
+      effect: "ALLOW"
+      condition:
+        match:
+          all:
+            - expr: "customOperators.daysSince(resource.lastAccessed) <= 7"
+

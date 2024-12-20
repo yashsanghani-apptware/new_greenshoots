@@ -1,0 +1,13 @@
+user:
+  attr:
+    role: "admin"
+    network: "internal"
+
+resource:
+  attr:
+    status: "active"
+
+context: {}
+
+action: "delete"
+

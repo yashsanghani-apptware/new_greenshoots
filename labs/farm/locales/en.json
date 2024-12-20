@@ -1,0 +1,14 @@
+{
+  "error.createFarm": "Failed to create farm",
+  "error.farmNotFound": "Farm not found",
+  "error.updateFarm": "Failed to update farm",
+  "error.getFarms": "Failed to get farms",
+  "error.getFarm": "Failed to get farm",
+  "error.deleteFarm": "Failed to delete farm",
+  "error.updateSoilInformation": "Failed to update soil information",
+  "error.updateFinancialInformation": "Failed to update financial information",
+  "error.updateCropInformation": "Failed to update crop information",
+  "error.updateOtherInformation": "Failed to update other information",
+  "error.generic": "An error occurred"
+}
+

@@ -1,0 +1,5 @@
+Flask
+Jinja2>=2.11.3,<3.0
+MarkupSafe>=1.1.1,<2.0
+
+

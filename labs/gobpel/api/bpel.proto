@@ -1,0 +1,67 @@
+syntax = "proto3";
+
+package bpel;
+
+import "google/protobuf/any.proto";
+import "google/protobuf/empty.proto";
+
+option go_package = "gobpel/api;api";
+
+message Process {
+    string name = 1;
+    string targetNamespace = 2;
+    string queryLanguage = 3;
+    string expressionLanguage = 4;
+    bool suppressJoinFailure = 5;
+    bool exitOnStandardFault = 6;
+    string bpelDefinition = 7;
+}
+
+message GetProcessRequest {
+    string processId = 1;
+}
+
+message GetAllProcessesResponse {
+    repeated Process processes = 1;
+}
+
+message ExecuteProcessRequest {
+    string processId = 1;
+}
+
+message ExecuteProcessResponse {
+    string status = 1;
+    repeated Process processes = 2;
+}
+
+message PublishRequest {
+    string resultsServer = 1;
+    string runMethod = 2;
+}
+
+message SubscribeRequest {
+    string eventType = 1;
+    string notifyURL = 2;
+}
+
+message GetProcessStatusRequest {
+    string processId = 1;
+}
+
+message GetProcessStatusResponse {
+    string status = 1;
+}
+
+service BPELProcessService {
+    rpc CreateProcess(Process) returns (Process);
+    rpc GetProcess(GetProcessRequest) returns (Process);
+    rpc UpdateProcess(Process) returns (Process);
+    rpc DeleteProcess(GetProcessRequest) returns (google.protobuf.Empty);
+    rpc DeleteAllProcesses(google.protobuf.Empty) returns (google.protobuf.Empty);
+    rpc GetAllProcesses(google.protobuf.Empty) returns (GetAllProcessesResponse);
+    rpc ExecuteProcess(ExecuteProcessRequest) returns (ExecuteProcessResponse);
+    rpc Publish(PublishRequest) returns (google.protobuf.Empty);
+    rpc Subscribe(SubscribeRequest) returns (google.protobuf.Empty);
+    rpc GetProcessStatus(GetProcessStatusRequest) returns (GetProcessStatusResponse);
+}
+

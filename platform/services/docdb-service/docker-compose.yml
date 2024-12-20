@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "6000:6000"
+    environment:
+      - MONGODB_URI=mongodb://host.docker.internal:27017/testdb
+      - REDIS_URI=redis://:redis@redis:6379
+      - DB_NAME=testdb
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:6.2
+    ports:
+      - "6379:6379"
+    command: ["redis-server", "--requirepass", "redis"]
+    volumes:
+      - redis-data:/data
+
+volumes:
+  redis-data:
+

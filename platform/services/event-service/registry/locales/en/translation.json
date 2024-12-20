@@ -1,0 +1,26 @@
+{
+  "event_published": "Event published successfully",
+  "error_publishing_event": "Error publishing event",
+  "subscribed_successfully": "Subscribed successfully",
+  "error_subscribing_event": "Error subscribing to event",
+  "unsubscribed_successfully": "Unsubscribed successfully",
+  "error_unsubscribing_event": "Error unsubscribing from event",
+  "error_listing_subscriptions": "Error listing subscriptions",
+  "error_listing_event_types": "Error listing event types",
+  "unsupported_event_type": "Unsupported event type",
+  "unsupported_resource": "Unsupported resource",
+  "event_type_created": "Event type created successfully",
+  "event_type_updated": "Event type updated successfully",
+  "event_type_deleted": "Event type deleted successfully",
+  "resource_created": "Resource created successfully",
+  "resource_updated": "Resource updated successfully",
+  "resource_deleted": "Resource deleted successfully",
+  "error_creating_event_type": "Error creating event type",
+  "error_updating_event_type": "Error updating event type",
+  "error_deleting_event_type": "Error deleting event type",
+  "error_creating_resource": "Error creating resource",
+  "error_updating_resource": "Error updating resource",
+  "error_deleting_resource": "Error deleting resource",
+  "error_fetching_metrics": "Error fetching metrics"
+}
+

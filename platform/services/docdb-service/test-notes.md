@@ -1,0 +1,165 @@
+
+# Agsiri Document Service - Testing Scenarios
+
+
+## Testing Scenarios
+Here are the test instructions to insert documents into the `LISTING` collection. 
+
+### Document Template
+
+Each document will follow this format:
+
+```json
+{
+  "listing_id": "1",
+  "name": "217 Pickle Hill",
+  "address": {
+    "house_number": "217",
+    "street": "Pickle Hill Road",
+    "apartment": "",
+    "city": "Austin",
+    "state": "TX",
+    "zip": "78701"
+  },
+  "location": {
+    "longitude": "-97.7431",
+    "latitude": "30.2672"
+  },
+  "property_description": "A beautiful farm with great soil and crop yield.",
+  "main_picture": "main_picture.jpg",
+  "images": ["image1.jpg", "image2.jpg"],
+  "videos": ["video1.mp4"],
+  "maps": ["map1.png"],
+  "parcel_information": ["parcel1", "parcel2"],
+  "due_diligence": {
+    "soil_information": {
+      "documents": ["soil_doc1.pdf"],
+      "maps": ["soil_map1.png"]
+    },
+    "financial_information": {
+      "cash_flow": {},
+      "sales_data": {},
+      "expenses_data": {},
+      "documents": ["financial_doc1.pdf"]
+    },
+    "crop_information": {},
+    "other": {}
+  }
+}
+
+```
+
+### Step-by-Step Instructions
+
+1. **Create the Collection:**
+   ```bash
+   curl -X POST http://localhost:6000/api/storage/collections -H "Content-Type: application/json" -d '{"collectionName": "LISTING"}'
+   ```
+
+2. **Insert Documents:**
+
+   Save the following script as `insert_listings.sh` and run it to insert 20 documents.
+
+   ```bash
+   #!/bin/bash
+
+   # Define the base document
+   base_document='{
+     "listing_id": "REPLACE_ID",
+     "name": "REPLACE_NAME",
+     "address": {
+       "house_number": "217",
+       "street": "Pickle Hill Road",
+       "apartment": "",
+       "city": "Austin",
+       "state": "TX",
+       "zip": "78701"
+     },
+     "location": {
+       "longitude": "-97.7431",
+       "latitude": "30.2672"
+     },
+     "property_description": "A beautiful farm with great soil and crop yield.",
+     "main_picture": "main_picture.jpg",
+     "images": ["image1.jpg", "image2.jpg"],
+     "videos": ["video1.mp4"],
+     "maps": ["map1.png"],
+     "parcel_information": ["parcel1", "parcel2"],
+     "due_diligence": {
+       "soil_information": {
+         "documents": ["soil_doc1.pdf"],
+         "maps": ["soil_map1.png"]
+       },
+       "financial_information": {
+         "cash_flow": {},
+         "sales_data": {},
+         "expenses_data": {},
+         "documents": ["financial_doc1.pdf"]
+       },
+       "crop_information": {},
+       "other": {}
+     }
+   }'
+
+   # Insert 20 documents
+   for i in {1..20}; do
+     document=$(echo "$base_document" | sed "s/REPLACE_ID/$i/" | sed "s/REPLACE_NAME/Listing $i/")
+     curl -X POST http://localhost:6000/api/storage/documents -H "Content-Type: application/json" -d "{\"collectionName\": \"LISTING\", \"documents\": [$document]}"
+     echo "Inserted document $i"
+   done
+   ```
+
+   Make the script executable and run it:
+
+   ```bash
+   chmod +x insert_listings.sh
+   ./insert_listings.sh
+   ```
+
+3. **Find Documents (Cache Miss):**
+   - Query to find documents where `listing_id` is greater than 10 (this will result in a cache miss the first time):
+     ```bash
+     curl -G 'http://localhost:6000/api/storage/documents' --data-urlencode 'collectionName=LISTING' --data-urlencode 'query={"listing_id": {"$gt": 10}}'
+     ```
+
+4. **Find Documents (Cache Hit):**
+   - Run the same query again to hit the cache:
+     ```bash
+     curl -G 'http://localhost:6000/api/storage/documents' --data-urlencode 'collectionName=LISTING' --data-urlencode 'query={"listing_id": {"$gt": 10}}'
+     ```
+
+### Verify Cache Hits and Misses
+
+To verify cache hits and misses, you need to check the server logs.
+
+1. **Run your server:**
+   ```bash
+   node dist/app.js
+   ```
+
+2. **Create the SSH Tunnel:**
+   Here I am using my labs servers on ec2. you should replace it with your ec2 host and ssh key
+
+   ```bash
+   ssh  -L 27017:quantumflow.cluster-c38aqya2orrr.us-east-1.docdb.amazonaws.com:27017 -o ServerAliveCountMax=3 -o ExitOnForwardFailure=yes -o ServerAliveInterval=15 -p 22 labs.4fiveone.com -N -f
+
+   ```
+
+3. **Build and Start Docker Containers:**
+   ```bash
+   docker-compose up --build
+   ```
+
+4. **Check the server logs:**
+
+   - For the first `findDocuments` request, you should see a log indicating a cache miss:
+     ```
+     Cache miss for query on LISTING
+     ```
+
+   - For the subsequent `findDocuments` request with the same query, you should see a log indicating a cache hit:
+     ```
+     Cache hit for query on LISTING
+     ```
+
+These log messages will help you verify whether the response was a cache hit or miss.

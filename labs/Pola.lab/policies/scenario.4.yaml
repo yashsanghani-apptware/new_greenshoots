@@ -1,0 +1,28 @@
+- scenarioId: 1
+  description: "Admin user accessing a confidential resource."
+  user:
+    attr:
+      role: "Admin"
+      age: 30
+  resource:
+    attr:
+      tags: ["confidential", "internal"]
+      lastAccessed: "2024-08-10T10:00:00Z"
+  context:
+    currentTime: "2024-08-15T10:00:00Z"
+  action: "view"
+
+- scenarioId: 2
+  description: "User younger than 18 trying to access a recently accessed resource."
+  user:
+    attr:
+      role: "User"
+      age: 17
+  resource:
+    attr:
+      tags: ["public"]
+      lastAccessed: "2024-08-14T10:00:00Z"
+  context:
+    currentTime: "2024-08-15T10:00:00Z"
+  action: "view"
+

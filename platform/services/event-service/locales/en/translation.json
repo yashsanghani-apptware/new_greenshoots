@@ -1,0 +1,9 @@
+{
+  "event_published": "Event published successfully",
+  "event_saved": "Event saved: {{id}}",
+  "error_publishing_event": "Error publishing event",
+  "subscribed_successfully": "Subscribed successfully",
+  "subscription_added": "Subscription added: {{callbackUrl}} to {{eventType}}",
+  "error_subscribing_event": "Error subscribing to event"
+}
+

@@ -1,0 +1,17 @@
+{
+  "name": "policy-evaluator-example",
+  "version": "1.0.0",
+  "description": "An example program to showcase the use of policyEvaluator in TypeScript",
+  "main": "dist/app.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/app.js"
+  },
+  "dependencies": {
+    "js-yaml": "^4.1.0"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
+    "typescript": "^4.0.0"
+  }
+}

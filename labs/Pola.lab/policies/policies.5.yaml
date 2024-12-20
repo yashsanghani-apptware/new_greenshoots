@@ -1,0 +1,65 @@
+- name: "Admin or Manager with High Clearance"
+  description: "Allow access if the user is an Admin or a Manager with a special clearance and high clearance level."
+  resource: "*"
+  rules:
+    - actions: ["*"]
+      effect: "ALLOW"
+      condition:
+        match:
+          all:
+            - expr: "customOperators.isAdmin(user.role) || (user.role === 'Manager' && customOperators.isIn('special-clearance', user.roles) && user.clearanceLevel > 7)"
+            - expr: "user.isActive && !user.isSuspended"
+
+- name: "Confidential and Recently Accessed Resource with Secure Tags"
+  description: "Allow access if the resource is confidential, was accessed within the last 5 days, and has secure tags."
+  resource: "*"
+  rules:
+    - actions: ["view", "edit"]
+      effect: "ALLOW"
+      condition:
+        match:
+          all:
+            - expr: "customOperators.hasTag(resource.tags, 'confidential')"
+            - expr: "customOperators.hasTag(resource.tags, 'secure')"
+            - expr: "customOperators.daysSince(resource.lastAccessed) <= 5"
+            - expr: "resource.sensitivityLevel >= 5 && resource.location === 'HQ'"
+
+- name: "Age, Clearance, and Department-Based Access"
+  description: "Allow access if the user is older than 25, has sufficient clearance, and is part of the 'R&D' department."
+  resource: "*"
+  rules:
+    - actions: ["*"]
+      effect: "ALLOW"
+      condition:
+        match:
+          all:
+            - expr: "customOperators.isOlderThan(user.age, 25)"
+            - expr: "user.clearanceLevel >= resource.requiredClearance"
+            - expr: "user.department === 'R&D'"
+            - expr: "user.isActive && !user.isSuspended && customOperators.hasTag(user.roles, 'researcher')"
+
+- name: "Sensitive Project Access by Senior Staff"
+  description: "Allow access if the user is part of a senior staff and the project is classified as sensitive."
+  resource: "*"
+  rules:
+    - actions: ["*"]
+      effect: "ALLOW"
+      condition:
+        match:
+          all:
+            - expr: "customOperators.contains(resource.name, 'Project') && resource.classification === 'sensitive'"
+            - expr: "customOperators.isIn('senior-staff', user.roles) && user.tenure >= 10"
+            - expr: "user.isActive && !user.isUnderInvestigation"
+
+- name: "Restricted Access During Maintenance"
+  description: "Deny access if the system is under maintenance or the resource is flagged for review."
+  resource: "*"
+  rules:
+    - actions: ["*"]
+      effect: "DENY"
+      condition:
+        match:
+          any:
+            - expr: "context.isUnderMaintenance"
+            - expr: "resource.isFlaggedForReview"
+

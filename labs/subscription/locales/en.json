@@ -1,0 +1,12 @@
+{
+  "error.createOrUpdateSubscription": "Failed to create or update subscription",
+  "error.listOfferingSubscriptions": "Failed to list offering subscriptions",
+  "error.listInvestorSubscriptions": "Failed to list investor subscriptions",
+  "error.deleteSubscription": "Failed to delete subscription",
+  "error.createOrUpdateAllocation": "Failed to create or update allocation",
+  "error.deleteAllocation": "Failed to delete allocation",
+  "error.generic": "An error occurred",
+  "success.deleteSubscription": "Subscription deleted successfully",
+  "success.deleteAllocation": "Allocation deleted successfully"
+}
+

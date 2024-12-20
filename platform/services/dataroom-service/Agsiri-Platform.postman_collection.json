@@ -1,0 +1,1460 @@
+{
+	"info": {
+		"_postman_id": "5a852c9a-543c-4ba8-aa92-d112cf3a5b29",
+		"name": "Agsiri-Platform",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31052964",
+		"_collection_link": "https://www.postman.com/speeding-capsule-251097/workspace/agsiri/collection/31052964-5a852c9a-543c-4ba8-aa92-d112cf3a5b29?action=share&source=collection_link&creator=31052964"
+	},
+	"item": [
+		{
+			"name": "Datarooms",
+			"item": [
+				{
+					"name": "create-data-room",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"organization_id\": \"60d5f4b1f8f8c5a001c8a3d9\",\n    \"ari\": \"valid_ari\",\n    \"data_residency\": {\n        \"country\": \"US\",\n        \"region\": \"us-east-1\",\n        \"data_center\": \"Data Center 1\"\n    },\n    \"name\": \"Testing Data Room on - YS\",\n    \"description\": \"Testing Data Room on July 26 - YS\",\n    \"created_by\": \"60d5f4b1f8f8c5a001c8a3d5\",\n    \"key_info\": {},\n    \"permissions\": []\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/datarooms",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"datarooms"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-dataroom",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/datarooms/:dataroom_id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"datarooms",
+								":dataroom_id"
+							],
+							"variable": [
+								{
+									"key": "dataroom_id",
+									"value": "66d4b33380b1419fb11135c6"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-data-rooms",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/datarooms",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"datarooms"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update-data-room",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"organization_id\": \"60d5f4b1f8f8c5a001c8a3d0\",\n    \"name\": \"Updating Amol's test Data room\",\n    \"description\": \"This is a updated test data room for testting APIs\",\n    \"created_by\": \"60d5f4b1f8f8c5a001c8a3d2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/datarooms/:dataroom_id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"datarooms",
+								":dataroom_id"
+							],
+							"variable": [
+								{
+									"key": "dataroom_id",
+									"value": "66d4b33380b1419fb11135c6"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete-data-room",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/datarooms/:dataroom_id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"datarooms",
+								":dataroom_id"
+							],
+							"variable": [
+								{
+									"key": "dataroom_id",
+									"value": "66d4b33380b1419fb11135c6"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create-data-room-permission",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"type\": \"VIEW\",\n  \"roles\": [\"investor\"],\n  \"users\": [\"60d5f4b1f8f8c5a001c8a3d2\"],\n  \"start_time\": \"2024-07-10T00:00:00Z\",\n  \"end_time\": \"2024-07-20T00:00:00Z\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/datarooms/:dataroom_id/permissions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"datarooms",
+								":dataroom_id",
+								"permissions"
+							],
+							"variable": [
+								{
+									"key": "dataroom_id",
+									"value": "66a387384f950e1d0d0705e7"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-data-room-permission",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/datarooms/:dataroom_id/permissions/:permission_id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"datarooms",
+								":dataroom_id",
+								"permissions",
+								":permission_id"
+							],
+							"variable": [
+								{
+									"key": "dataroom_id",
+									"value": "66a387384f950e1d0d0705e7"
+								},
+								{
+									"key": "permission_id",
+									"value": "66a3882b4f950e1d0d0705f3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get-list-of-data-room-permission",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/datarooms/:dataroom_id/permissions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"datarooms",
+								":dataroom_id",
+								"permissions"
+							],
+							"variable": [
+								{
+									"key": "dataroom_id",
+									"value": "66a387384f950e1d0d0705e7"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update-data-room-permission",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"type\": \"WRITE\",\n  \"roles\": [\"user\"],\n  \"users\": [\"60d5f4b1f8f8c5a001c8a3d2\"],\n  \"start_time\": \"2024-07-12T00:00:00Z\",\n  \"end_time\": \"2024-07-25T00:00:00Z\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/datarooms/:dataroom_id/permissions/:permission_id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"datarooms",
+								":dataroom_id",
+								"permissions",
+								":permission_id"
+							],
+							"variable": [
+								{
+									"key": "dataroom_id",
+									"value": "66a387384f950e1d0d0705e7"
+								},
+								{
+									"key": "permission_id",
+									"value": "66a3882b4f950e1d0d0705f3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete-data-room-permission",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/datarooms/:dataroom_id/permissions/:permission_id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"datarooms",
+								":dataroom_id",
+								"permissions",
+								":permission_id"
+							],
+							"variable": [
+								{
+									"key": "dataroom_id",
+									"value": "66a387384f950e1d0d0705e7"
+								},
+								{
+									"key": "permission_id",
+									"value": "66a3882b4f950e1d0d0705f3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "check-user-permission-for-data-room",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"permissions\": [\"WRITE\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/datarooms/:dataroom_id/user/:user_id/checkpermission",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"datarooms",
+								":dataroom_id",
+								"user",
+								":user_id",
+								"checkpermission"
+							],
+							"variable": [
+								{
+									"key": "dataroom_id",
+									"value": "66a3875a4f950e1d0d0705e9"
+								},
+								{
+									"key": "user_id",
+									"value": "60d5f4b1f8f8c5a001c8a3d2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cabinet",
+			"item": [
+				{
+					"name": "Create Cabinet",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"client_id\": \"60d5f4b1f8f8c5a001c8a3d9\",\n    \"dataroom\": \"66a3875a4f950e1d0d0705e9\",\n    \"name\": \"cabinet -1\",\n    \"description\": \"This is test cabinet for Yash' Data room.\",\n    \"user_id\": \"60d5f4b1f8f8c5a001c8a3d2\",\n    \"type\": \"SECURE\",\n    \"permissions\": []\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/cabinets",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"cabinets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Cabinet",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/cabinets/:cabinet_id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"cabinets",
+								":cabinet_id"
+							],
+							"variable": [
+								{
+									"key": "cabinet_id",
+									"value": "66a38a744f950e1d0d070610"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Cabinets",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/cabinets",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"cabinets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Cabinet",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"client_id\": \"60d5f4b1f8f8c5a001c8a3d9\",\n    \"dataroom\": \"66a387384f950e1d0d0705e7\",\n    \"name\": \"cabinet -2\",\n    \"description\": \"This is test cabinet for Yash' Data room. movinfg into Amol's data room\",\n    \"type\": \"SECURE\",\n    \"permissions\": []\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/cabinets/:cabinet_id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"cabinets",
+								":cabinet_id"
+							],
+							"variable": [
+								{
+									"key": "cabinet_id",
+									"value": "66a38adb4f950e1d0d070614"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Cabinet",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/cabinets/:cabinet_id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"cabinets",
+								":cabinet_id"
+							],
+							"variable": [
+								{
+									"key": "cabinet_id",
+									"value": "66a38adb4f950e1d0d070614"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Cabinet Permission",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"type\": \"VIEW\",\n  \"roles\": [\"admin\"],\n  \"users\": [\"60d5f4b1f8f8c5a001c8a3d2\"],\n  \"start_time\": \"2024-07-10T00:00:00Z\",\n  \"end_time\": \"2024-07-20T00:00:00Z\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/cabinets/:cabinet_id/permissions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"cabinets",
+								":cabinet_id",
+								"permissions"
+							],
+							"variable": [
+								{
+									"key": "cabinet_id",
+									"value": "66a38a744f950e1d0d070610"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Cabinet Permissions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/cabinets/:cabinet_id/permissions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"cabinets",
+								":cabinet_id",
+								"permissions"
+							],
+							"variable": [
+								{
+									"key": "cabinet_id",
+									"value": "66a38a744f950e1d0d070610"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Cabinet Permission",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/cabinets/:cabinet_id/permissions/:permission_id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"cabinets",
+								":cabinet_id",
+								"permissions",
+								":permission_id"
+							],
+							"variable": [
+								{
+									"key": "cabinet_id",
+									"value": "66a38a744f950e1d0d070610"
+								},
+								{
+									"key": "permission_id",
+									"value": "66a38bdc4f950e1d0d07061a"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Cabinet Permission",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"type\": \"READ\",\n  \"roles\": [\"user\"],\n  \"users\": [\"60d5f4b1f8f8c5a001c8a3d2\"],\n  \"start_time\": \"2024-07-10T00:00:00Z\",\n  \"end_time\": \"2024-07-20T00:00:00Z\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/cabinets/:cabinet_id/permissions/:permission_id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"cabinets",
+								":cabinet_id",
+								"permissions",
+								":permission_id"
+							],
+							"variable": [
+								{
+									"key": "cabinet_id",
+									"value": "66a38a744f950e1d0d070610"
+								},
+								{
+									"key": "permission_id",
+									"value": "66a38bdc4f950e1d0d07061a"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete cabinet Permission",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/cabinets/:cabinet_id/permissions/:permission_id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"cabinets",
+								":cabinet_id",
+								"permissions",
+								":permission_id"
+							],
+							"variable": [
+								{
+									"key": "cabinet_id",
+									"value": "66a38a744f950e1d0d070610"
+								},
+								{
+									"key": "permission_id",
+									"value": "66a38bdc4f950e1d0d07061a"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check User Permissions for Cabinet",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"permissions\": [\"READ\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/cabinets/:cabinet_id/user/:user_id/checkpermission",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"cabinets",
+								":cabinet_id",
+								"user",
+								":user_id",
+								"checkpermission"
+							],
+							"variable": [
+								{
+									"key": "cabinet_id",
+									"value": "66a38a744f950e1d0d070610"
+								},
+								{
+									"key": "user_id",
+									"value": "60d5f4b1f8f8c5a001c8a3d2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "File",
+			"item": [
+				{
+					"name": "Create File Permissions",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"type\": \"VIEW\",\r\n  \"roles\": [\"admin\"],\r\n  \"users\": [\"60d5f4e2f8f8c5a001c8a3d3\"],\r\n  \"start_time\": \"2024-07-10T00:00:00Z\",\r\n  \"end_time\": \"2024-07-20T00:00:00Z\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/cabinets/:cabinet_id/files/:file_id/permissions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"cabinets",
+								":cabinet_id",
+								"files",
+								":file_id",
+								"permissions"
+							],
+							"variable": [
+								{
+									"key": "cabinet_id",
+									"value": ""
+								},
+								{
+									"key": "file_id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get File Permissions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/cabinets/:cabinet_id/files/:file_id/permissions/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"cabinets",
+								":cabinet_id",
+								"files",
+								":file_id",
+								"permissions",
+								""
+							],
+							"variable": [
+								{
+									"key": "cabinet_id",
+									"value": ""
+								},
+								{
+									"key": "file_id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Single File Permission",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/cabinets/:cabinet_id/files/:file_id/permissions/:permission_id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"cabinets",
+								":cabinet_id",
+								"files",
+								":file_id",
+								"permissions",
+								":permission_id"
+							],
+							"variable": [
+								{
+									"key": "cabinet_id",
+									"value": ""
+								},
+								{
+									"key": "file_id",
+									"value": ""
+								},
+								{
+									"key": "permission_id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Single File Permission",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"type\": \"READ\",\r\n  \"roles\": [\"admin\"],\r\n  \"users\": [\"60d5f4e2f8f8c5a001c8a3d3\"],\r\n  \"start_time\": \"2024-07-10T00:00:00Z\",\r\n  \"end_time\": \"2024-07-20T00:00:00Z\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/cabinets/:cabinet_id/files/:file_id/permissions/:permission_id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"cabinets",
+								":cabinet_id",
+								"files",
+								":file_id",
+								"permissions",
+								":permission_id"
+							],
+							"variable": [
+								{
+									"key": "cabinet_id",
+									"value": ""
+								},
+								{
+									"key": "file_id",
+									"value": ""
+								},
+								{
+									"key": "permission_id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check Permission",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \"permissions\": [\"VIEW\"]}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/cabinets/:cabinet_id/files/:file_id/user/:user_id/checkpermission",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"cabinets",
+								":cabinet_id",
+								"files",
+								":file_id",
+								"user",
+								":user_id",
+								"checkpermission"
+							],
+							"variable": [
+								{
+									"key": "cabinet_id",
+									"value": ""
+								},
+								{
+									"key": "file_id",
+									"value": ""
+								},
+								{
+									"key": "user_id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Single File Permission",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"type\": \"READ\",\r\n  \"roles\": [\"admin\"],\r\n  \"users\": [\"60d5f4e2f8f8c5a001c8a3d3\"],\r\n  \"start_time\": \"2024-07-10T00:00:00Z\",\r\n  \"end_time\": \"2024-07-20T00:00:00Z\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/cabinets/:cabinet_id/files/:file_id/permissions/:permission_id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"cabinets",
+								":cabinet_id",
+								"files",
+								":file_id",
+								"permissions",
+								":permission_id"
+							],
+							"variable": [
+								{
+									"key": "cabinet_id",
+									"value": ""
+								},
+								{
+									"key": "file_id",
+									"value": ""
+								},
+								{
+									"key": "permission_id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create File",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/Users/macbook/Desktop/Screenshot 2024-08-08 at 12.47.25 PM.png"
+								},
+								{
+									"key": "name",
+									"value": "File Name 2",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Description Of the file",
+									"type": "text"
+								},
+								{
+									"key": "created_by",
+									"value": "60d5f4b1f8f8c5a001c8a3d2",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "SECURE",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "Pending",
+									"type": "text"
+								},
+								{
+									"key": "organization_id",
+									"value": "66c495ecd740294dd9f4940d",
+									"type": "text"
+								},
+								{
+									"key": "cabinet_id",
+									"value": "66c4ad334098a1f2ea34a3c3",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "dataroom_id",
+									"value": "66bc95ddeeb8f01616957e30",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "encryption_key",
+									"value": "someEncryptionKey",
+									"type": "text"
+								},
+								{
+									"key": "ari",
+									"value": "valid_ari_string",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/files",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"files"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update File",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/Noor/OneDrive/Pictures/Screenshots/Screenshot 2023-08-21 000139.png",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "update name 1",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Description Of the file",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "user_id",
+									"value": "60d5f4b1f8f8c5a001c8a3d2",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "type",
+									"value": "SECURE",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "Testing",
+									"type": "text"
+								},
+								{
+									"key": "organization_id",
+									"value": "66c495ecd740294dd9f4940d",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/files/:file_id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"files",
+								":file_id"
+							],
+							"variable": [
+								{
+									"key": "file_id",
+									"value": "66d33de06ddb5404f0358929"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Files",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n      \"organization_id\": \"66c495ecd740294dd9f4940d\" //,\n      // \"cabinet_id\": \"66c4ad334098a1f2ea34a3c3\",\n      //   \"dataroom_id\": \"66bc95ddeeb8f01616957e30\"   \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/files",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"files"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get  Single File",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/files/:file_id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"files",
+								":file_id"
+							],
+							"variable": [
+								{
+									"key": "file_id",
+									"value": "66d33de06ddb5404f0358929"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete File",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/files/:file_id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"files",
+								":file_id"
+							],
+							"variable": [
+								{
+									"key": "file_id",
+									"value": "66d33de06ddb5404f0358929"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get  file from version",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/files/:file_id/version/:version_id",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"files",
+								":file_id",
+								"version",
+								":version_id"
+							],
+							"variable": [
+								{
+									"key": "file_id",
+									"value": "66c4addf4098a1f2ea34a3d1"
+								},
+								{
+									"key": "version_id",
+									"value": "VBKiBFHsAYZxWel0fQ38VrJUWI9sST50"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "download_file",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/files/:file_id/download?version_id=VBKiBFHsAYZxWel0fQ38VrJUWI9sST50",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"files",
+								":file_id",
+								"download"
+							],
+							"query": [
+								{
+									"key": "version_id",
+									"value": "VBKiBFHsAYZxWel0fQ38VrJUWI9sST50"
+								}
+							],
+							"variable": [
+								{
+									"key": "file_id",
+									"value": "66c4addf4098a1f2ea34a3d1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Attach File",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    //   \"cabinet_id\": \"66c4ad334098a1f2ea34a3c3\"\n    \"dataroom_id\": \"66bc95ddeeb8f01616957e30\"   \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/files/:file_id/attachFile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"files",
+								":file_id",
+								"attachFile"
+							],
+							"variable": [
+								{
+									"key": "file_id",
+									"value": "66c4f128db77a58a6fa2ef48"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Dettach File",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n      \"cabinet_id\": \"66c4ad334098a1f2ea34a3c3\"\n    // \"dataroom_id\": \"66bc95ddeeb8f01616957e30\"   \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/files/:file_id/dettachFile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"files",
+								":file_id",
+								"dettachFile"
+							],
+							"variable": [
+								{
+									"key": "file_id",
+									"value": "66c4f128db77a58a6fa2ef48"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "docuSign",
+			"item": [
+				{
+					"name": "signatures",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "files",
+									"type": "file",
+									"src": [
+										"/home/admin1/Downloads/World_Wide_Corp_lorem_1.pdf",
+										"/home/admin1/Downloads/World_Wide_Corp_Battle_Plan_Trafalgar_2.docx"
+									],
+									"disabled": true
+								},
+								{
+									"key": "signer_email",
+									"value": "amol.thite@apptware.com",
+									"type": "text"
+								},
+								{
+									"key": "signer_name",
+									"value": "amol thite",
+									"type": "text"
+								},
+								{
+									"key": "cc_email",
+									"value": "amolthite1996@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "cc_name",
+									"value": "amol thite home",
+									"type": "text"
+								},
+								{
+									"key": "file_id",
+									"value": "66b9ebff81c0bbd6e357eafb",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/signatures/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"signatures",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "downloadLogs",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/download-logs/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"download-logs",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
