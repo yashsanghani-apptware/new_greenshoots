@@ -18,6 +18,7 @@ User Roles
 * Portfolio - This is the complete portfolio of the logged in investor (see Portfolio Flow)
 * Offerings - These are the current offerings that are available for investing. The investor can select one or more of the offerings to subscribe to
 
+
 ## Portfolio Flow
 * Summary
 * Total Investment
